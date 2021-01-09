@@ -4,9 +4,14 @@ import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class Rule8InspectionVisitor extends JavaElementVisitor {
 
     ProblemsHolder problemsHolder;
+
+    final String methodToDetect = "openFileOutput";
+    final String methodArgsToDetect = "MODE_PRIVATE";
 
     public Rule8InspectionVisitor(@NotNull ProblemsHolder holder) {
         problemsHolder = holder;
@@ -14,17 +19,24 @@ public class Rule8InspectionVisitor extends JavaElementVisitor {
 
     @Override
     public void visitMethodCallExpression(PsiMethodCallExpression expression) {
-        PsiExpression[] psiExpressions = expression.getArgumentList().getExpressions();
-        for (PsiExpression psiExpression: psiExpressions) {
-            System.out.println(psiExpression.getText());
+        if(Objects.equals(expression.getMethodExpression().getReferenceName(), methodToDetect))
+        {
+            PsiExpression[] psiExpressions = expression.getArgumentList().getExpressions();
+            boolean argToDetectIsPresent = false;
+            for (PsiExpression psiExpression: psiExpressions) {
+                if (psiExpression.getText().contains(methodArgsToDetect) || psiExpression.getText().contains("0")) {
+                    argToDetectIsPresent = true;
+                    break;
+                }
+            }
+            if(!argToDetectIsPresent)
+            {
+                problemsHolder.registerProblem(expression, "Call(s) to internal storage (are) not private");
+            }
         }
-        System.out.println(expression.getText());
         super.visitMethodCallExpression(expression);
-    }
 
-    @Override
-    public void visitMethod(PsiMethod method) {
-        System.out.println(method.getText());
-        super.visitMethod(method);
+        //
+
     }
 }
