@@ -1,19 +1,16 @@
 <idea-plugin>
     <id>org.spritz.matthieu_louf.Vulnerabilities Detection Plugin</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>SPECK - Android Studio Detection</name>
+    <vendor email="" url="">Matthieu Louf</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    Implementation of two first rules 8 and 12
     ]]></description>
 
-    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <inspectionToolProvider implementation="VulnerabilitiesDetectionProvider"/>
     </extensions>
 
     <actions>

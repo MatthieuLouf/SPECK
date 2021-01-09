@@ -18,11 +18,14 @@ dependencies {
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version '2020.3.1'
+    plugins = ['java']
+    version '2020.2'
+    intellij.updateSinceUntilBuild false
+    alternativeIdePath 'C:\\Program Files\\Android\\Android Studio'
 }
 patchPluginXml {
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+      Implementation of two first rules 8 and 12"""
 }
 test {
     useJUnitPlatform()
