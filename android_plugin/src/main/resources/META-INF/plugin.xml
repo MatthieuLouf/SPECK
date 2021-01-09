@@ -1,12 +1,13 @@
 <idea-plugin>
     <id>org.spritz.matthieu_louf.Vulnerabilities Detection Plugin</id>
     <name>SPECK - Android Studio Detection</name>
-    <vendor email="" url="">Matthieu Louf</vendor>
+    <vendor email="" url="https://github.com/MatthieuLouf/SPECK/tree/main/android_plugin">Matthieu Louf</vendor>
 
     <description><![CDATA[
     Implementation of two first rules 8 and 12
     ]]></description>
 
+    <depends>com.intellij.modules.java</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
