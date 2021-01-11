@@ -1,5 +1,6 @@
 package Rule12;
 
+import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.*;
 import org.jetbrains.annotations.NotNull;
@@ -16,6 +17,9 @@ public class Rule12InspectionVisitor extends JavaElementVisitor {
 
     final String errorMessage = "Shared preference(s) saving (are) not private";
 
+    ProblemHighlightType type = ProblemHighlightType.ERROR;
+
+
     public Rule12InspectionVisitor(@NotNull ProblemsHolder holder) {
         problemsHolder = holder;
     }
@@ -26,6 +30,7 @@ public class Rule12InspectionVisitor extends JavaElementVisitor {
             PsiExpression[] psiExpressions = expression.getArgumentList().getExpressions();
 
             boolean argToDetectIsPresent = false;
+
             for (PsiExpression psiExpression : psiExpressions) {
                 //Don't evaluate first argument
                 if (psiExpression != Arrays.stream(psiExpressions).findFirst().get()) {
@@ -36,7 +41,7 @@ public class Rule12InspectionVisitor extends JavaElementVisitor {
                 }
             }
             if (!argToDetectIsPresent) {
-                problemsHolder.registerProblem(expression, errorMessage);
+                problemsHolder.registerProblem(expression, errorMessage,type);
             }
         }
         super.visitMethodCallExpression(expression);
