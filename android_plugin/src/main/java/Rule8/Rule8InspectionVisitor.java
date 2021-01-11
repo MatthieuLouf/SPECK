@@ -27,9 +27,12 @@ public class Rule8InspectionVisitor extends JavaElementVisitor {
 
             boolean argToDetectIsPresent = false;
             for (PsiExpression psiExpression : psiExpressions) {
-                if (psiExpression.getText().contains(methodArgsToDetect) || psiExpression.getText().contains("0")) {
-                    argToDetectIsPresent = true;
-                    break;
+                //Don't evaluate first argument
+                if (psiExpression != Arrays.stream(psiExpressions).findFirst().get()) {
+                    if (psiExpression.getText().contains(methodArgsToDetect) || psiExpression.getText().contains("0")) {
+                        argToDetectIsPresent = true;
+                        break;
+                    }
                 }
             }
             if (!argToDetectIsPresent) {
