@@ -1,5 +1,5 @@
-import Rule12.Rule12CodeInspection;
-import Rule8.Rule8CodeInspection;
+import Rules.Rule12.Rule12CodeInspection;
+import Rules.Rule8.Rule8CodeInspection;
 import com.intellij.codeInspection.InspectionToolProvider;
 import org.jetbrains.annotations.NotNull;
 

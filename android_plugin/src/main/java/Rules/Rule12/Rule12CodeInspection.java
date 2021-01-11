@@ -1,7 +1,8 @@
-package Rule12;
+package Rules.Rule12;
 
 import com.intellij.codeInsight.daemon.GroupNames;
 import com.intellij.codeInspection.AbstractBaseJavaLocalInspectionTool;
+import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,7 +13,7 @@ public class Rule12CodeInspection extends AbstractBaseJavaLocalInspectionTool {
     }
 
     public @NotNull String getGroupDisplayName() {
-        return GroupNames.PERFORMANCE_GROUP_NAME;
+        return "VulnerabilityRules";
     }
 
     public @NotNull String getShortName() {
@@ -23,10 +24,18 @@ public class Rule12CodeInspection extends AbstractBaseJavaLocalInspectionTool {
         return true;
     }
 
+
+    final String methodToDetect = "getSharedPreferences";
+    final String methodArgsToDetect = "MODE_PRIVATE";
+
+    final String errorMessage = "Shared preference(s) saving (are) not private";
+
+    ProblemHighlightType type = ProblemHighlightType.GENERIC_ERROR;
+
     @NotNull
     @Override
     public Rule12InspectionVisitor buildVisitor(@NotNull ProblemsHolder holder, boolean isOnTheFly) {
-        return new Rule12InspectionVisitor(holder);
+        return new Rule12InspectionVisitor(holder,methodToDetect,methodArgsToDetect,errorMessage,type);
     }
 
 }

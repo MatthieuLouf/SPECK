@@ -1,5 +1,6 @@
-package Rule8;
+package Rules.Rule12;
 
+import Rules.BaseRuleElementVisitor;
 import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.*;
@@ -8,19 +9,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Rule8InspectionVisitor extends JavaElementVisitor {
+public class Rule12InspectionVisitor extends BaseRuleElementVisitor {
 
-    ProblemsHolder problemsHolder;
-
-    final String methodToDetect = "openFileOutput";
-    final String methodArgsToDetect = "MODE_PRIVATE";
-
-    final String errorMessage = "Call(s) to internal storage (are) not private";
-
-    ProblemHighlightType type = ProblemHighlightType.WARNING;
-
-    public Rule8InspectionVisitor(@NotNull ProblemsHolder holder) {
-        problemsHolder = holder;
+    public Rule12InspectionVisitor(@NotNull ProblemsHolder holder, String methodToDetect, String methodArgsToDetect, String errorMessage, ProblemHighlightType type) {
+        super(holder,methodToDetect,methodArgsToDetect,errorMessage,type);
     }
 
     @Override
@@ -45,4 +37,5 @@ public class Rule8InspectionVisitor extends JavaElementVisitor {
         }
         super.visitMethodCallExpression(expression);
     }
+
 }

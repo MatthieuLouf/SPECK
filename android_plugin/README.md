@@ -4,6 +4,6 @@ This plugin implements some of the google security documentation, by analyzing d
 
 The implemented rules in the plugin are the followings:
 
-- Rule8     : Store private data within internal storage
-- Rule12    : Use SharedPreferences in private mode
+- Rules.Rule8     : Store private data within internal storage
+- Rules.Rule12    : Use SharedPreferences in private mode
 

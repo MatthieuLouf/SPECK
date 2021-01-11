@@ -1,5 +1,6 @@
-package Rule12;
+package Rules.Rule8;
 
+import Rules.BaseRuleElementVisitor;
 import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.*;
@@ -8,21 +9,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Rule12InspectionVisitor extends JavaElementVisitor {
+public class Rule8InspectionVisitor extends BaseRuleElementVisitor {
 
-    ProblemsHolder problemsHolder;
-
-    final String methodToDetect = "getSharedPreferences";
-    final String methodArgsToDetect = "MODE_PRIVATE";
-
-    final String errorMessage = "Shared preference(s) saving (are) not private";
-
-    ProblemHighlightType type = ProblemHighlightType.GENERIC_ERROR;
-
-    public Rule12InspectionVisitor(@NotNull ProblemsHolder holder) {
-        problemsHolder = holder;
+    public Rule8InspectionVisitor(@NotNull ProblemsHolder holder, String methodToDetect, String methodArgsToDetect, String errorMessage, ProblemHighlightType type) {
+        super(holder,methodToDetect,methodArgsToDetect,errorMessage,type);
     }
-
     @Override
     public void visitMethodCallExpression(PsiMethodCallExpression expression) {
         if (Objects.equals(expression.getMethodExpression().getReferenceName(), methodToDetect)) {
@@ -45,5 +36,4 @@ public class Rule12InspectionVisitor extends JavaElementVisitor {
         }
         super.visitMethodCallExpression(expression);
     }
-
 }
