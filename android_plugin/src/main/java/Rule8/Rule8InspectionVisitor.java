@@ -19,7 +19,6 @@ public class Rule8InspectionVisitor extends JavaElementVisitor {
 
     ProblemHighlightType type = ProblemHighlightType.WARNING;
 
-
     public Rule8InspectionVisitor(@NotNull ProblemsHolder holder) {
         problemsHolder = holder;
     }
@@ -41,7 +40,7 @@ public class Rule8InspectionVisitor extends JavaElementVisitor {
                 }
             }
             if (!argToDetectIsPresent) {
-                problemsHolder.registerProblem(expression, errorMessage,type);
+                problemsHolder.registerProblem(psiExpressions[1], errorMessage,type);
             }
         }
         super.visitMethodCallExpression(expression);

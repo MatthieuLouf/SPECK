@@ -41,7 +41,7 @@ public class Rule12InspectionVisitor extends JavaElementVisitor {
                 }
             }
             if (!argToDetectIsPresent) {
-                problemsHolder.registerProblem(expression, errorMessage,type);
+                problemsHolder.registerProblem(psiExpressions[1], errorMessage,type);
             }
         }
         super.visitMethodCallExpression(expression);
