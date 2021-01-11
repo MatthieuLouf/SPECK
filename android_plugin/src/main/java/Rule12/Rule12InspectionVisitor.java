@@ -17,8 +17,7 @@ public class Rule12InspectionVisitor extends JavaElementVisitor {
 
     final String errorMessage = "Shared preference(s) saving (are) not private";
 
-    ProblemHighlightType type = ProblemHighlightType.ERROR;
-
+    ProblemHighlightType type = ProblemHighlightType.GENERIC_ERROR;
 
     public Rule12InspectionVisitor(@NotNull ProblemsHolder holder) {
         problemsHolder = holder;
