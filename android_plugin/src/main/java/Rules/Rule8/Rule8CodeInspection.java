@@ -1,35 +1,21 @@
 package Rules.Rule8;
 
-import Rules.Rule12.Rule12InspectionVisitor;
-import com.intellij.codeInsight.daemon.GroupNames;
-import com.intellij.codeInspection.AbstractBaseJavaLocalInspectionTool;
+import Rules.BaseRuleCodeInspection;
 import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import org.jetbrains.annotations.NotNull;
 
-public class Rule8CodeInspection extends AbstractBaseJavaLocalInspectionTool {
-
-    public @NotNull String getDisplayName() {
-        return "Store private data within internal storage";
-    }
-
-    public @NotNull String getGroupDisplayName() {
-        return "VulnerabilityRules";
-    }
-
-    public @NotNull String getShortName() {
-        return "Rule8_Internal_Storage";
-    }
-
-    public boolean isEnabledByDefault() {
-        return true;
-    }
+public class Rule8CodeInspection extends BaseRuleCodeInspection {
 
     final String methodToDetect = "openFileOutput";
     final String methodArgsToDetect = "MODE_PRIVATE";
-    final String errorMessage = "Call(s) to internal storage (are) not private";
 
-    ProblemHighlightType type = ProblemHighlightType.WARNING;
+    Rule8CodeInspection() {
+        super("Store private data within internal storage",
+                "Rule8_Internal_Storage",
+                "Call(s) to internal storage (are) not private",
+                ProblemHighlightType.WARNING);
+    }
 
     @NotNull
     @Override
