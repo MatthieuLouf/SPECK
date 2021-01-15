@@ -31,7 +31,7 @@ public class Rule8InspectionVisitor extends BaseRuleElementVisitor {
                 }
             }
             if (!argToDetectIsPresent) {
-                problemsHolder.registerProblem(psiExpressions[1], errorMessage,type);
+                this.registerProblem(psiExpressions[1]);
             }
         }
         super.visitMethodCallExpression(expression);

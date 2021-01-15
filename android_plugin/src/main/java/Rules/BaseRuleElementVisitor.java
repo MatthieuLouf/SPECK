@@ -3,6 +3,7 @@ package Rules;
 import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.JavaElementVisitor;
+import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class BaseRuleElementVisitor extends JavaElementVisitor {
@@ -21,6 +22,11 @@ public abstract class BaseRuleElementVisitor extends JavaElementVisitor {
         this.methodArgsToDetect = methodArgsToDetect;
         this.errorMessage = errorMessage;
         this.type = type;
+    }
+
+    protected void registerProblem(PsiElement element)
+    {
+        problemsHolder.registerProblem(element, errorMessage,type);
     }
 
 }
