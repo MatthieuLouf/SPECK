@@ -4,7 +4,9 @@
     <vendor email="" url="https://github.com/MatthieuLouf/SPECK/tree/main/android_plugin">Matthieu Louf</vendor>
 
     <description><![CDATA[
-    Implementation of two first rules 8 and 12
+    Implementation of two first rules of android's security guidelines, a extension of the work done on the SPECK project.
+
+    SPECK is a tool designed to search for several bad coding pratices on an Android application, either in source code or packaged APKs. From the android documentation, we extracted a set of rules to follow, in order to preserve apps' security. It performs a static analysis by looking through the source code of an app, in order to detect rules' violations.
     ]]></description>
 
     <depends>com.intellij.modules.java</depends>
@@ -13,8 +15,4 @@
     <extensions defaultExtensionNs="com.intellij">
         <inspectionToolProvider implementation="VulnerabilitiesDetectionProvider"/>
     </extensions>
-
-    <actions>
-        <!-- Add your actions here -->
-    </actions>
 </idea-plugin>

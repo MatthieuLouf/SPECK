@@ -5,6 +5,11 @@ import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Store private data within internal storage
+ * Store all private user data within the device's internal storage, which is sandboxed per app.
+ * -> https://developer.android.com/topic/security/best-practices#internal-storage
+ */
 public class Rule8CodeInspection extends BaseRuleCodeInspection {
 
     final String methodToDetect = "openFileOutput";

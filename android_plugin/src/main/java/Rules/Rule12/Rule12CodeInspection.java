@@ -5,6 +5,11 @@ import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Use SharedPreferences in private mode
+ * When using getSharedPreferences() to create or access your app's SharedPreferences objects, use MODE_PRIVATE
+ * https://developer.android.com/topic/security/best-practices#sharedpreferences
+ */
 public class Rule12CodeInspection extends BaseRuleCodeInspection {
 
     final String methodToDetect = "getSharedPreferences";

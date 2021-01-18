@@ -6,6 +6,11 @@ import com.intellij.psi.JavaElementVisitor;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Abstract class providing global rule scanning parameters
+ *
+ * extends the Java visitor implementing some callbacks when scanning methods/assignments etc
+ */
 public abstract class BaseRuleElementVisitor extends JavaElementVisitor {
     protected ProblemsHolder problemsHolder;
 
@@ -24,9 +29,13 @@ public abstract class BaseRuleElementVisitor extends JavaElementVisitor {
         this.type = type;
     }
 
-    protected void registerProblem(PsiElement element)
-    {
-        problemsHolder.registerProblem(element, errorMessage,type);
+    /**
+     * Globally used method to highlight some part of the code
+     *
+     * @param element PsiElement pointing to the code part
+     */
+    protected void registerProblem(PsiElement element) {
+        problemsHolder.registerProblem(element, errorMessage, type);
     }
 
 }

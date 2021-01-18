@@ -9,10 +9,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * Rule12CodeInspection code visitor
+ */
 public class Rule12InspectionVisitor extends BaseRuleElementVisitor {
 
     public Rule12InspectionVisitor(@NotNull ProblemsHolder holder, String methodToDetect, String methodArgsToDetect, String errorMessage, ProblemHighlightType type) {
-        super(holder,methodToDetect,methodArgsToDetect,errorMessage,type);
+        super(holder, methodToDetect, methodArgsToDetect, errorMessage, type);
     }
 
     @Override
